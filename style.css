@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Arial, serif;
 }
 
 div {
@@ -19,6 +20,27 @@ h3 {
     border-radius: 20px;
     padding: 4px;
     text-align: center;
+    cursor: pointer;
+    font-size: large;
+}
+
+button{
+    font-size: large;
+    background-color: #acfd2f;
+    border-radius: 20px;
+    padding: 4px;
+    text-align: center;
+    cursor: pointer;
+    color: #262335;
+}
+button:hover {
+    background-color: #2b2b2c;
+    color: greenyellow;
+}
+
+h3:hover {
+    background-color: greenyellow;
+    color: #2b2b2c;
 }
 ::-webkit-scrollbar {
     display: none;
@@ -34,4 +56,13 @@ body {
 
 canvas {
     image-rendering: pixelated;
+}
+input{
+    background-color: #2b2b2c;
+    border-radius: 20px;
+    padding: 4px;
+    text-align: center;
+    cursor: pointer;
+    font-size: large;
+    color: greenyellow;
 }
