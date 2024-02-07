@@ -1,43 +1,33 @@
 
 
-# TypeScript Project Template Readme
+# Prime Number Visualization
 
-## Overview
+This TypeScript project visualizes prime numbers on an HTML canvas using polar coordinates.
 
-This TypeScript project template is designed to kickstart your TypeScript development with proper configuration for the TypeScript Compiler (`tsc`) and Prettier. Below, you'll find a brief explanation of the key configuration files and their purpose.
+## How it Works
 
-## Files
+The application leverages polar coordinates and the Sieve of Eratosthenes algorithm to generate and visualize prime numbers. Here's a brief overview:
 
-### `tsconfig.json`
+- **Polar to Cartesian Conversion:**
+  - The function `polarToCartesian` converts polar coordinates (radius and angle) to Cartesian coordinates (x and y).
 
-The `tsconfig.json` file contains the configuration settings for the TypeScript Compiler (`tsc`). Here's a breakdown of the key options:
+- **Prime Number Check:**
+  - The `isPrime` function checks whether a given number is prime using a basic primality check algorithm.
 
-- **target:** Specifies the ECMAScript target version (ESNext in this case).
-- **lib:** Defines the libraries to include during compilation (ESNext and DOM).
-- **outDir:** Specifies the output directory for compiled files.
-- **rootDir:** Indicates the root directory of TypeScript source files.
-- **strict:** Enables strict type-checking options.
-- **esModuleInterop:** Allows default imports from CommonJS modules.
-- **module:** Specifies the module system (ESNext in this case).
-- **removeComments:** Removes comments from the generated output.
-- **sourceMap:** Generates source map files for better debugging.
+- **Visualization on Canvas:**
+  - The `main` function generates prime numbers up to the user-specified value.
+  - Each prime number is converted to Cartesian coordinates and drawn on an HTML canvas.
 
-### `.prettierrc`
+## Mathematical Concepts
 
-The `.prettierrc` file configures Prettier, a code formatter for maintaining consistent code style. Here's an overview of the configuration options:
+- **Sieve of Eratosthenes:**
+  - The algorithm efficiently finds all prime numbers up to a given limit.
+  - In this project, it is used implicitly in the `isPrime` function to count the number of primes.
 
-- **arrowParens:** Enforces parentheses around a sole arrow function parameter.
-- **bracketSameLine:** Ensures multiline object literals have the opening bracket on the same line.
-- **bracketSpacing:** Adds spaces between brackets in object literals.
-- **endOfLine:** Defines the line ending style (LF).
-- **jsxSingleQuote:** Uses single quotes for JSX attributes.
-- **printWidth:** Specifies the maximum line length before wrapping.
-- **semi:** Omits semicolons at the end of statements.
-- **useTabs:** Indents with tabs instead of spaces.
-- **trailingComma:** Controls trailing commas in object literals and arrays.
-- **tabWidth:** Sets the number of spaces per tab.
-- **singleQuote:** Uses single quotes instead of double quotes for strings.
-- **htmlWhitespaceSensitivity:** Defines sensitivity to HTML whitespace (strict).
+- **Polar Coordinates:**
+  - Polar coordinates represent a point in a plane by its distance from a reference point and the angle made with a reference axis.
+  - The `polarToCartesian` function converts polar coordinates to Cartesian coordinates for visualization.
+
 
 ## Installation
 
