@@ -1,4 +1,5 @@
 # Prime Number Visualization
+link to pages https://samuelkodehode.github.io/Polar-Visualization-of-Primes/
 
 This TypeScript project visualizes prime numbers on an HTML canvas using polar coordinates.
 
