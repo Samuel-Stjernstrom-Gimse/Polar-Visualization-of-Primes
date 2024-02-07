@@ -1,5 +1,3 @@
-
-
 # Prime Number Visualization
 
 This TypeScript project visualizes prime numbers on an HTML canvas using polar coordinates.
@@ -64,17 +62,3 @@ The application leverages polar coordinates and the Sieve of Eratosthenes algori
       ```bash
       npx tsc --watch
       ```
-
-3. **Format Code with Prettier:**
-    - To format your code using Prettier, run:
-      ```bash
-      npm run format
-      ```
-
-## Additional Notes
-
-- Customize the `tsconfig.json` and `.prettierrc` files based on your project requirements.
-- Refer to the official [TypeScript Compiler Options documentation](https://www.typescriptlang.org/tsconfig) and [Prettier Configuration documentation](https://prettier.io/docs/en/configuration.html) for more details.
-
-Now your TypeScript project is ready for development with proper TypeScript and Prettier configurations. Happy coding!
-```
