@@ -37,10 +37,13 @@ button{
     text-align: center;
     cursor: pointer;
     color: #262335;
+    border: 0;
+    transition: 0.2s;
 }
 button:hover {
     background-color: #2b2b2c;
     color: greenyellow;
+    transition: 0.2s;
 }
 
 h3:hover {
@@ -61,7 +64,20 @@ body {
 canvas {
     image-rendering: pixelated;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 input{
+
+    border: 0;
     background-color: #2b2b2c;
     border-radius: 20px;
     padding: 4px;
