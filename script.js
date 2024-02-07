@@ -6,6 +6,7 @@ const zoomOut = document.getElementById('zx2');
 const primeNumber = document.getElementById('primeNumber');
 let zoomNum = 200;
 let numberOfPrimes = 0;
+let color = 'rgb(255,255,255)';
 function polarToCartesian(r, a) {
     const aRad = (a * Math.PI) / 180;
     const x = r * Math.cos(aRad);
@@ -21,7 +22,7 @@ function isPrime(number) {
             return false;
         }
     }
-    numberOfPrimes += 1;
+    numberOfPrimes++;
     return true;
 }
 const main = (inputUser, zoom) => {
@@ -31,7 +32,7 @@ const main = (inputUser, zoom) => {
         if (ctx) {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            ctx.fillStyle = 'rgb(255,255,255)';
+            ctx.fillStyle = color;
             for (let i = 0; i < inputUser; i++) {
                 if (isPrime(i)) {
                     const coordinates = polarToCartesian(i, i);
@@ -51,18 +52,22 @@ const main = (inputUser, zoom) => {
 };
 zoomInn.addEventListener('click', () => {
     zoomNum /= 2;
-    main(input.valueAsNumber, zoomNum);
+    initMain();
 });
 zoomOut.addEventListener('click', () => {
     zoomNum *= 2;
-    main(input.valueAsNumber, zoomNum);
+    initMain();
 });
 button.addEventListener('click', () => {
-    console.log('click');
-    console.log(input.valueAsNumber);
     zoomNum = 200;
-    main(input.valueAsNumber, zoomNum);
-    primeNumber.textContent = `number of primes\nbetween\n0-${input.valueAsNumber}\u00A0=\u00A0${numberOfPrimes}`;
-    numberOfPrimes = 0;
+    initMain();
 });
+const initMain = () => {
+    let userInput = input.valueAsNumber < 1500000 ? input.valueAsNumber : 1500000;
+    primeNumber.textContent = `number of primes\nbetween\n0-${userInput}\u00A0=\u00A0${numberOfPrimes}`;
+    main(userInput, zoomNum);
+    primeNumber.textContent = `number of primes\nbetween\n0-${userInput}\u00A0=\u00A0${numberOfPrimes}`;
+    input.valueAsNumber = userInput;
+    numberOfPrimes = 0;
+};
 //# sourceMappingURL=script.js.map

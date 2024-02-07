@@ -5,6 +5,7 @@ const zoomOut = document.getElementById('zx2') as HTMLHeadingElement
 const primeNumber = document.getElementById('primeNumber') as HTMLHeadingElement
 let zoomNum: number = 200
 let numberOfPrimes: number = 0
+let color = 'rgb(255,255,255)'
 
 function polarToCartesian(r: number, a: number): [number, number] {
 	const aRad: number = (a * Math.PI) / 180
@@ -22,12 +23,13 @@ function isPrime(number: number): boolean {
 			return false
 		}
 	}
-	numberOfPrimes += 1
+	numberOfPrimes++
 	return true
 }
 
-const main = (inputUser: number, zoom: number) => {
+const main = (inputUser: number, zoom: number): void => {
 	const canvas = document.getElementById('primeCanvas') as HTMLCanvasElement | null
+
 	if (canvas) {
 		const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d')
 
@@ -35,7 +37,7 @@ const main = (inputUser: number, zoom: number) => {
 			canvas.width = window.innerWidth
 			canvas.height = window.innerHeight
 
-			ctx.fillStyle = 'rgb(255,255,255)'
+			ctx.fillStyle = color
 
 			for (let i: number = 0; i < inputUser; i++) {
 				if (isPrime(i)) {
@@ -54,20 +56,27 @@ const main = (inputUser: number, zoom: number) => {
 	}
 }
 
-zoomInn.addEventListener('click', () => {
+zoomInn.addEventListener('click', (): void => {
 	zoomNum /= 2
-	main(input.valueAsNumber, zoomNum)
-})
-zoomOut.addEventListener('click', () => {
-	zoomNum *= 2
-	main(input.valueAsNumber, zoomNum)
+	initMain()
 })
 
-button.addEventListener('click', () => {
-	console.log('click')
-	console.log(input.valueAsNumber)
-	zoomNum = 200
-	main(input.valueAsNumber, zoomNum)
-	primeNumber.textContent = `number of primes\nbetween\n0-${input.valueAsNumber}\u00A0=\u00A0${numberOfPrimes}`
-	numberOfPrimes = 0
+zoomOut.addEventListener('click', (): void => {
+	zoomNum *= 2
+	initMain()
 })
+
+button.addEventListener('click', (): void => {
+	zoomNum = 200
+	initMain()
+})
+
+const initMain = () => {
+	let userInput: number = input.valueAsNumber < 1500000 ? input.valueAsNumber : 1500000
+	primeNumber.textContent = `number of primes\nbetween\n0-${userInput}\u00A0=\u00A0${numberOfPrimes}`
+	main(userInput, zoomNum)
+
+	primeNumber.textContent = `number of primes\nbetween\n0-${userInput}\u00A0=\u00A0${numberOfPrimes}`
+	input.valueAsNumber = userInput
+	numberOfPrimes = 0
+}
