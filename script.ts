@@ -1,10 +1,30 @@
 const input = document.getElementById('input') as HTMLInputElement
 const button = document.getElementById('btn') as HTMLButtonElement
-const zx1 = document.getElementById('zx1') as HTMLHeadingElement
-const zx2 = document.getElementById('zx2') as HTMLHeadingElement
-const zx4 = document.getElementById('zx4') as HTMLHeadingElement
-const zx8 = document.getElementById('zx8') as HTMLHeadingElement
+const zoomInn = document.getElementById('zx1') as HTMLHeadingElement
+const zoomOut = document.getElementById('zx2') as HTMLHeadingElement
+const primeNumber = document.getElementById('primeNumber') as HTMLHeadingElement
 let zoomNum: number = 200
+let numberOfPrimes: number = 0
+
+function polarToCartesian(r: number, a: number): [number, number] {
+	const aRad: number = (a * Math.PI) / 180
+	const x: number = r * Math.cos(aRad)
+	const y: number = r * Math.sin(aRad)
+	return [x, y]
+}
+
+function isPrime(number: number): boolean {
+	if (number < 2) {
+		return false
+	}
+	for (let i: number = 2; i <= Math.sqrt(number); i++) {
+		if (number % i === 0) {
+			return false
+		}
+	}
+	numberOfPrimes += 1
+	return true
+}
 
 const main = (inputUser: number, zoom: number) => {
 	const canvas = document.getElementById('primeCanvas') as HTMLCanvasElement | null
@@ -14,25 +34,6 @@ const main = (inputUser: number, zoom: number) => {
 		if (ctx) {
 			canvas.width = window.innerWidth
 			canvas.height = window.innerHeight
-
-			function polarToCartesian(r: number, a: number): [number, number] {
-				const aRad: number = (a * Math.PI) / 180
-				const x: number = r * Math.cos(aRad)
-				const y: number = r * Math.sin(aRad)
-				return [x, y]
-			}
-
-			function isPrime(number: number): boolean {
-				if (number < 2) {
-					return false
-				}
-				for (let i: number = 2; i <= Math.sqrt(number); i++) {
-					if (number % i === 0) {
-						return false
-					}
-				}
-				return true
-			}
 
 			ctx.fillStyle = 'rgb(255,255,255)'
 
@@ -53,25 +54,20 @@ const main = (inputUser: number, zoom: number) => {
 	}
 }
 
-zx1.addEventListener('click', () => {
-	zoomNum = 200
+zoomInn.addEventListener('click', () => {
+	zoomNum /= 2
 	main(input.valueAsNumber, zoomNum)
 })
-zx2.addEventListener('click', () => {
-	zoomNum = 400
-	main(input.valueAsNumber, zoomNum)
-})
-zx4.addEventListener('click', () => {
-	zoomNum = 800
-	main(input.valueAsNumber, zoomNum)
-})
-zx8.addEventListener('click', () => {
-	zoomNum = 1600
+zoomOut.addEventListener('click', () => {
+	zoomNum *= 2
 	main(input.valueAsNumber, zoomNum)
 })
 
 button.addEventListener('click', () => {
 	console.log('click')
 	console.log(input.valueAsNumber)
+	zoomNum = 200
 	main(input.valueAsNumber, zoomNum)
+	primeNumber.textContent = `number of primes\nbetween\n0-${input.valueAsNumber}\u00A0=\u00A0${numberOfPrimes}`
+	numberOfPrimes = 0
 })

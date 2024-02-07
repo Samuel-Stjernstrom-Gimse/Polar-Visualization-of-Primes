@@ -14,14 +14,19 @@ div {
     top: 8%;
     left: 2%;
     color: greenyellow;
+    opacity: 1;
+    transition: 0.7s;
+    max-width: 200px;
+}
+
+div:hover {
+    opacity: 1;
+    transition: 0.7s;
 }
 h3 {
-    background-color: #2b2b2c;
-    border-radius: 20px;
-    padding: 4px;
-    text-align: center;
-    cursor: pointer;
-    font-size: large;
+    font-size: 14px;
+    color: gray;
+    font-weight: lighter;
 }
 
 button{
@@ -39,8 +44,7 @@ button:hover {
 }
 
 h3:hover {
-    background-color: greenyellow;
-    color: #2b2b2c;
+color: ghostwhite;
 }
 ::-webkit-scrollbar {
     display: none;
@@ -65,4 +69,11 @@ input{
     cursor: pointer;
     font-size: large;
     color: greenyellow;
+}
+
+h2 {
+    font-size: 12px;
+}
+h1 {
+    opacity: 1;
 }
