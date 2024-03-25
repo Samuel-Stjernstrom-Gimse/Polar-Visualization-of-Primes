@@ -18,7 +18,10 @@ function isPrime(number: number): boolean {
 	if (number < 2) {
 		return false
 	}
-	for (let i: number = 2; i <= Math.sqrt(number); i++) {
+	if (number == 2){
+		return true
+	}
+	for (let i: number = 3; i <= Math.sqrt(number); i+=2) {
 		if (number % i === 0) {
 			return false
 		}
